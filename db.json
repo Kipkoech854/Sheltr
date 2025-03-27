@@ -1,0 +1,212 @@
+{
+  "shelters": [
+    {
+      "id": 1,
+      "name": "Safe Haven Shelter",
+      "location": "New York, NY",
+      "type": "Emergency",
+      "image": "https://source.unsplash.com/300x200/?shelter",
+      "price": "free"
+    },
+    {
+      "id": 2,
+      "name": "Rim-Plaza",
+      "location": "Juja",
+      "type": "Two-Bedroom",
+      "image": "images/Nuila-Medicine-Houston-Houston-NRG-Center.webp",
+      "price": "25000"
+    },
+    {
+      "id": 3,
+      "name": "Hope House",
+      "location": "Los Angeles, CA",
+      "type": "Long-term",
+      "image": "https://source.unsplash.com/300x200/?home",
+      "price": "35000"
+    },
+    {
+      "id": 4,
+      "name": "Community Care Center",
+      "location": "Chicago, IL",
+      "type": "Family",
+      "image": "https://source.unsplash.com/300x200/?home",
+      "price": "31000"
+    },
+    {
+      "id": 5,
+      "name": "Emergency Haven 78",
+      "location": "Houston, TX",
+      "type": "Emergency",
+      "image": "https://source.unsplash.com/300x200/?emergency",
+      "price": "free"
+    },
+    {
+      "id": 6,
+      "name": "Emergency Haven 92",
+      "location": "San Antonio, TX",
+      "type": "Emergency",
+      "image": "https://source.unsplash.com/300x200/?emergency",
+      "price": "31000"
+    },
+    {
+      "id": 7,
+      "name": "Emergency Haven 47",
+      "location": "Los Angeles, CA",
+      "type": "Emergency",
+      "image": "https://source.unsplash.com/300x200/?emergency",
+      "price": "free"
+    },
+    {
+      "id": 8,
+      "name": "Emergency Haven 61",
+      "location": "Phoenix, AZ",
+      "type": "Emergency",
+      "image": "https://source.unsplash.com/300x200/?emergency",
+      "price": "15000"
+    },
+    {
+      "id": 9,
+      "name": "Emergency Haven 83",
+      "location": "Chicago, IL",
+      "type": "Emergency",
+      "image": "https://source.unsplash.com/300x200/?emergency",
+      "price": "free"
+    },
+    {
+      "id": 10,
+      "name": "Two-Bedroom Haven 12",
+      "location": "Philadelphia, PA",
+      "type": "Two-Bedroom",
+      "image": "https://source.unsplash.com/300x200/?twobedroom",
+      "price": "25000"
+    },
+    {
+      "id": 11,
+      "name": "Two-Bedroom Haven 34",
+      "location": "San Diego, CA",
+      "type": "Two-Bedroom",
+      "image": "https://source.unsplash.com/300x200/?twobedroom",
+      "price": "31000"
+    },
+    {
+      "id": 12,
+      "name": "Two-Bedroom Haven 76",
+      "location": "Dallas, TX",
+      "type": "Two-Bedroom",
+      "image": "https://source.unsplash.com/300x200/?twobedroom",
+      "price": "35000"
+    },
+    {
+      "id": 13,
+      "name": "Two-Bedroom Haven 89",
+      "location": "San Jose, CA",
+      "type": "Two-Bedroom",
+      "image": "https://source.unsplash.com/300x200/?twobedroom",
+      "price": "19000"
+    },
+    {
+      "id": 14,
+      "name": "Two-Bedroom Haven 21",
+      "location": "Austin, TX",
+      "type": "Two-Bedroom",
+      "image": "https://source.unsplash.com/300x200/?twobedroom",
+      "price": "20000"
+    },
+    {
+      "id": 15,
+      "name": "Long-term Haven 102",
+      "location": "San Francisco, CA",
+      "type": "Long-term",
+      "image": "https://source.unsplash.com/300x200/?residence",
+      "price": "40000"
+    },
+    {
+      "id": 16,
+      "name": "Long Stay Home 28",
+      "location": "Baltimore, MD",
+      "type": "Long-term",
+      "image": "https://source.unsplash.com/300x200/?mansion",
+      "price": "45000"
+    },
+    {
+      "id": 17,
+      "name": "Forever Shelter 56",
+      "location": "Dallas, TX",
+      "type": "Long-term",
+      "image": "https://source.unsplash.com/300x200/?longterm",
+      "price": "50000"
+    },
+    {
+      "id": 18,
+      "name": "Senior Stay 39",
+      "location": "Minneapolis, MN",
+      "type": "Long-term",
+      "image": "https://source.unsplash.com/300x200/?village",
+      "price": "43000"
+    },
+    {
+      "id": 19,
+      "name": "Family Haven 66",
+      "location": "Charlotte, NC",
+      "type": "Family",
+      "image": "https://source.unsplash.com/300x200/?familyhome",
+      "price": "35000"
+    },
+    {
+      "id": 20,
+      "name": "Family Care 75",
+      "location": "Houston, TX",
+      "type": "Family",
+      "image": "https://source.unsplash.com/300x200/?suburb",
+      "price": "37000"
+    },
+    {
+      "id": 21,
+      "name": "Cozy Nest 12",
+      "location": "Detroit, MI",
+      "type": "Family",
+      "image": "https://source.unsplash.com/300x200/?cozy",
+      "price": "32000"
+    },
+    {
+      "id": 22,
+      "name": "Happy Home 93",
+      "location": "Philadelphia, PA",
+      "type": "Family",
+      "image": "https://source.unsplash.com/300x200/?suburban",
+      "price": "33000"
+    },
+    {
+      "id": 23,
+      "name": "Short Stay 51",
+      "location": "New Orleans, LA",
+      "type": "Short-term",
+      "image": "https://source.unsplash.com/300x200/?shortstay",
+      "price": "free"
+    },
+    {
+      "id": 24,
+      "name": "Temporary Residence 41",
+      "location": "Salt Lake City, UT",
+      "type": "Short-term",
+      "image": "https://source.unsplash.com/300x200/?hotel",
+      "price": "15000"
+    },
+    {
+      "id": 25,
+      "name": "Weekend Haven 77",
+      "location": "Denver, CO",
+      "type": "Short-term",
+      "image": "https://source.unsplash.com/300x200/?cabin",
+      "price": "7000"
+    },
+    {
+      "id": 26,
+      "name": "Transit Home 63",
+      "location": "St. Louis, MO",
+      "type": "Short-term",
+      "image": "https://source.unsplash.com/300x200/?travel",
+      "price": "4500"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+document.addEventListener("DOMContentLoaded", async () => {
+    let sheltersData = [];
+
+    async function fetchShelters() {
+        try {
+            const response = await fetch("http://localhost:3000/shelters"); 
+            sheltersData = await response.json();
+            displayListings(sheltersData);
+            populateDropdown(sheltersData);
+        } catch (error) {
+            console.error("Error fetching shelters:", error);
+        }
+    }
+
+    function displayListings(shelterList) {
+        const container = document.getElementById("listings-container");
+        container.innerHTML = ""; 
+    
+        shelterList.forEach(shelter => {
+            const listing = document.createElement("div");
+            listing.classList.add("listing");
+            listing.innerHTML = `
+                <img src="${shelter.image}" alt="${shelter.name}">
+                <div class="description">
+                    <h3>${shelter.name}</h3>
+                    <p><strong>Location:</strong> ${shelter.location}</p>
+                    <p><strong>Type:</strong> ${shelter.type}</p>
+                    <p><strong>Price:</strong> ${shelter.price ? `Ksh ${shelter.price}` : "Free"}</p>
+                    <button id= "details">View Details</button>
+                </div>
+            `;
+            container.appendChild(listing);
+        });
+    }
+
+    function getUniqueTypes(shelters) {
+        return [...new Set(shelters.map(shelter => shelter.type))];
+    }
+
+    function populateDropdown(shelters) {
+        const dropdownList = document.getElementById("dropdown-list");
+        dropdownList.innerHTML = "";
+        const types = getUniqueTypes(shelters);
+        types.forEach(type => {
+            const link = document.createElement("a");
+            link.textContent = type;
+            link.onclick = () => filterByType(type);
+            dropdownList.appendChild(link);
+        });
+    }
+
+    function filterByType(type) {
+        const filteredShelters = sheltersData.filter(shelter => shelter.type === type);
+        displayListings(filteredShelters);
+    }
+
+    document.querySelector(".dropdown-button").addEventListener("click", function() {
+        document.getElementById("dropdown-list").style.display = 
+            document.getElementById("dropdown-list").style.display === "block" ? "none" : "block";
+    });
+
+    window.addEventListener("click", function(event) {
+        if (!event.target.matches(".dropdown-button")) {
+            document.getElementById("dropdown-list").style.display = "none";
+        }
+    });
+
+    document.getElementById("search-bar").addEventListener("input", () => {
+        filterListings();
+    });
+
+    function filterListings() {
+        const searchInput = document.getElementById("search-bar").value.toLowerCase();
+        const filteredShelters = sheltersData.filter(shelter => 
+            shelter.name.toLowerCase().includes(searchInput) ||
+            shelter.location.toLowerCase().includes(searchInput) ||
+            shelter.type.toLowerCase().includes(searchInput)
+        );
+        displayListings(filteredShelters);
+    }
+
+
+    document.querySelectorAll("#filterbyprice button").forEach(button => {
+        button.addEventListener("click", () => {
+            filterByPrice(button.classList[0]);
+        });
+    });
+
+    function filterByPrice(priceCategory) {
+        let filteredShelters = [];
+
+        switch (priceCategory) {
+            case "zero":
+                filteredShelters = sheltersData.filter(shelter => !shelter.price || shelter.price === 0);
+                break;
+            case "one":
+                filteredShelters = sheltersData.filter(shelter => shelter.price > 0 && shelter.price <= 5000);
+                break;
+            case "two":
+                filteredShelters = sheltersData.filter(shelter => shelter.price >= 5001 && shelter.price <= 10000);
+                break;
+            case "three":
+                filteredShelters = sheltersData.filter(shelter => shelter.price >= 10001 && shelter.price <= 20000);
+                break;
+            case "four":
+                filteredShelters = sheltersData.filter(shelter => shelter.price >= 20001 && shelter.price <= 30000);
+                break;
+            case "five":
+                filteredShelters = sheltersData.filter(shelter => shelter.price >= 30001);
+                break;
+            default:
+                filteredShelters = sheltersData;
+        }
+
+        displayListings(filteredShelters);
+    }
+
+    fetchShelters();
+});
+
