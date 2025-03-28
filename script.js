@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     <p><strong>Location:</strong> ${shelter.location}</p>
                     <p><strong>Type:</strong> ${shelter.type}</p>
                     <p><strong>Price:</strong> ${shelter.price ? `Ksh ${shelter.price}` : "Free"}</p>
-                    <button id= "details">View Details</button>
+                    <button>View Details</button>
                 </div>
             `;
             container.appendChild(listing);
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         displayListings(filteredShelters);
     }
 
-
+    
     document.querySelectorAll("#filterbyprice button").forEach(button => {
         button.addEventListener("click", () => {
             filterByPrice(button.classList[0]);
@@ -115,6 +115,23 @@ document.addEventListener("DOMContentLoaded", async () => {
         displayListings(filteredShelters);
     }
 
+    
+    document.getElementById("login-icon").addEventListener("click", () => {
+        document.getElementById("login-form").classList.toggle("hidden");
+    });
+
+    document.getElementById("login-btn").addEventListener("click", () => {
+        const username = document.getElementById("username").value.trim();
+        const email = document.getElementById("email").value.trim();
+
+        if (username && email) {
+            const firstName = username.split(" ")[0]; 
+            document.getElementById("greeting").textContent = `Hello, ${firstName}`;
+            document.getElementById("login-form").classList.add("hidden"); 
+        } else {
+            alert("Please enter both your name and email.");
+        }
+    });
+
     fetchShelters();
 });
-
