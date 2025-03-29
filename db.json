@@ -6,15 +6,17 @@
       "location": "New York, NY",
       "type": "Emergency ",
       "image":"https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGhvdXNpbmd8ZW58MHx8MHx8fDA%3D",
-      "price": "free"
+      "price": "free",
+      "services":"24/7 medical assistance, food distribution, counseling services"
     },
     {
       "id": 2,
       "name": "Rim-Plaza",
       "location": "Juja",
-      "type": "Two-Bedroom",
-      "image": "https://images.unsplash.com/photo-1742830444687-7dfd4c0934a5?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "price": "25000"
+      "type" :"Two-Bedroom",
+      "image": "https://images.unsplash.com/photo-1584894132095-a4664fb5fd39?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fGFwcGFydG1lbnR8ZW58MHx8MHx8fDA%3D",
+      "price": "25000",
+      "services": "Private kitchen, high-speed internet, security surveillance"
     },
     {
       "id": 3,
@@ -22,7 +24,8 @@
       "location": "Los Angeles, CA",
       "type": "Long-term",
       "image":  "https://images.unsplash.com/photo-1737103515275-ebc1b6934c13?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDM5fE04alZiTGJUUndzfHxlbnwwfHx8fHw%3D",
-      "price": "35000"
+      "price": "35000",
+      "services": "Community kitchen, educational programs, therapy sessions"
     },
     {
       "id": 4,
@@ -30,7 +33,8 @@
       "location": "Thika",
       "type": "Family",
       "image": "https://plus.unsplash.com/premium_photo-1682982298084-eb847ba386f9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDI2fE04alZiTGJUUndzfHxlbnwwfHx8fHw%3D",
-      "price": "31000"
+      "price": "31000",
+      "services": "Playgrounds, family counseling, childcare support"
     },
     {
       "id": 5,
@@ -38,15 +42,18 @@
       "location": "Houston, TX",
       "type": "Emergency",
       "image": "https://images.unsplash.com/photo-1729536976461-02bf5baf4470?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDQ4fE04alZiTGJUUndzfHxlbnwwfHx8fHw%3D",
-      "price": "free"
+      "price": "free",
+      "services": "Temporary housing, emergency food supply, crisis intervention"
     },
+    
     {
       "id": 6,
       "name": "Emergency Haven 92",
       "location": "San Antonio, TX",
       "type": "Emergency",
       "image": "https://media.istockphoto.com/id/185509324/photo/a-hospital-emergency-bay-area-with-a-huge-red-signage.webp?a=1&b=1&s=612x612&w=0&k=20&c=As7P-U81yF2bWMTT4nqntUjM2MiUvwSeQB7XqZrNjnk=",
-      "price": "free"
+      "price": "free",
+      "services": "Safe sleeping areas, free transportation, legal aid"
     },
     {
       "id": 7,
@@ -54,7 +61,8 @@
       "location": "Los Angeles, CA",
       "type": "Emergency",
       "image": "https://media.istockphoto.com/id/173009707/photo/emergency-room-entrance-sign-with-ambulance.webp?a=1&b=1&s=612x612&w=0&k=20&c=vuasXVWRgaeQm8ozSfBRao33CzlK0XQNW4WY5zshxX0=",
-      "price": "free"
+      "price": "free",
+      "services": "Laundry services, pet-friendly, high-speed internet"
     },
     {
       "id": 8,
@@ -62,7 +70,8 @@
       "location": "Phoenix, AZ",
       "type": "Emergency",
       "image": "https://images.unsplash.com/photo-1514371055400-73fefa1a50a2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZW1lcmdlbmN5JTIwY2VudHJlc3xlbnwwfHwwfHx8MA%3D%3D",
-      "price": "15000"
+      "price": "15000",
+      "services": "Community gardens, fitness center, mentorship programs"
     },
     {
       "id": 9,
