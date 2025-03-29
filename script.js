@@ -26,25 +26,27 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <div class="description">
                     <h3>${shelter.name}</h3>
                     <p><strong>Location:</strong> ${shelter.location}</p>
+                    <p><strong>Listing Agent:</strong> ${shelter.listingagent}</p>
                     <p><strong>Type:</strong> ${shelter.type}</p>
                     <p><strong>Price:</strong> ${shelter.price ? `Ksh ${shelter.price}` : "Free"}</p>
-                    <button class="services-button">View Details</button>
+                    <button class="services-button" data-id="${shelter.id}">View Details</button>
                     <p class="services-info hidden"></p>
                 </div>
             `;
 
-            const button = listing.querySelector(".services-button");
-            const servicesInfo = listing.querySelector(".services-info");
+            container.appendChild(listing);
+        });
 
-        
-            button.addEventListener("click", () => {
-                if (servicesInfo.textContent === "") {
-                    fetchServices(shelter.id, servicesInfo);
+        document.querySelectorAll(".services-button").forEach(button => {
+            button.addEventListener("click", async function () {
+                const shelterId = this.getAttribute("data-id");
+                const servicesInfo = this.nextElementSibling;
+                
+                if (!servicesInfo.textContent) {
+                    await fetchServices(shelterId, servicesInfo);
                 }
                 servicesInfo.classList.toggle("hidden");
             });
-
-            container.appendChild(listing);
         });
     }
 
@@ -52,19 +54,22 @@ document.addEventListener("DOMContentLoaded", async () => {
         try {
             const response = await fetch(`${URL}/${shelterId}`);
             if (!response.ok) throw new Error("Failed to fetch services");
+            console.log(response);
             
             const shelter = await response.json();
             
-            // Ensure the services field exists and is an array
-            const services = Array.isArray(shelter.services) ? shelter.services.join(", ") : "No services available";
+            const services = shelter.services ? shelter.services : "No services available";
             
             servicesInfoElement.textContent = `Services: ${services}`;
+            console.log(services);
+            console.log(servicesInfoElement);
         } catch (error) {
             console.error("Error fetching services:", error);
             servicesInfoElement.textContent = "Error loading services.";
+            console.log(servicesInfoElement);
+            console.log(error);
         }
     }
-    
 
     function getUniqueTypes(shelters) {
         return [...new Set(shelters.map(shelter => shelter.type))];
@@ -107,7 +112,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const filteredShelters = sheltersData.filter(shelter =>
             shelter.name.toLowerCase().includes(searchInput) ||
             shelter.location.toLowerCase().includes(searchInput) ||
-            shelter.type.toLowerCase().includes(searchInput)
+            shelter.type.toLowerCase().includes(searchInput) 
         );
         displayListings(filteredShelters);
     }
@@ -123,7 +128,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         switch (priceCategory) {
             case "zero":
-                filteredShelters = sheltersData.filter(shelter => !shelter.price || shelter.price === 0);
+                filteredShelters = sheltersData.filter(shelter => !shelter.price || shelter.price === "free");
                 break;
             case "one":
                 filteredShelters = sheltersData.filter(shelter => shelter.price > 0 && shelter.price <= 5000);
