@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             button.addEventListener("click", async function () {
                 const shelterId = this.getAttribute("data-id");
                 const servicesInfo = this.nextElementSibling;
-                
+
                 if (!servicesInfo.textContent) {
                     await fetchServices(shelterId, servicesInfo);
                 }
@@ -54,20 +54,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         try {
             const response = await fetch(`${URL}/${shelterId}`);
             if (!response.ok) throw new Error("Failed to fetch services");
-            console.log(response);
-            
+
             const shelter = await response.json();
-            
             const services = shelter.services ? shelter.services : "No services available";
-            
+
             servicesInfoElement.textContent = `Services: ${services}`;
-            console.log(services);
-            console.log(servicesInfoElement);
         } catch (error) {
             console.error("Error fetching services:", error);
             servicesInfoElement.textContent = "Error loading services.";
-            console.log(servicesInfoElement);
-            console.log(error);
         }
     }
 
@@ -112,7 +106,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const filteredShelters = sheltersData.filter(shelter =>
             shelter.name.toLowerCase().includes(searchInput) ||
             shelter.location.toLowerCase().includes(searchInput) ||
-            shelter.type.toLowerCase().includes(searchInput) 
+            shelter.type.toLowerCase().includes(searchInput)
         );
         displayListings(filteredShelters);
     }
@@ -168,6 +162,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             alert("Please enter both your name and email.");
         }
     });
-
+    
     fetchShelters();
 });
+
+    

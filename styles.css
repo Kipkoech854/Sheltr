@@ -16,6 +16,13 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
+    background-image: url('https://images.unsplash.com/photo-1562017971-ad8f1457b739?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGFwcGFydG1lbnR8ZW58MHx8MHx8fDA%3D'); 
+    background-size: cover;  
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 30px; 
+    display: flex;
+    color: white; 
 }
 
 
@@ -78,12 +85,13 @@ header {
 
 .listing {
     background-color: white;
-    width: 250px;
+    width: 270px;
     margin: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     text-align: center;
+
 }
 
 
@@ -132,15 +140,7 @@ header {
 .services-button {
     background-color: #007bff;
 }
-header {
-    background-image: url('https://images.unsplash.com/photo-1562017971-ad8f1457b739?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGFwcGFydG1lbnR8ZW58MHx8MHx8fDA%3D'); 
-    background-size: cover;  
-    background-position: center; 
-    background-repeat: no-repeat; 
-    height: 60px; 
-    display: flex;
-    color: white; 
-}
+
 #name{
     left: 10%;
     color: maroon;
@@ -153,4 +153,34 @@ header {
 .hidden {
     display: none;
 }
+#contacts-box {
+    background-color: #007bff; 
+    color: white; 
+    padding: 20px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+#contacts-box a {
+    color: #ffeb3b; 
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#contacts-box a:hover {
+    text-decoration: underline;
+}
+
+#review-bar {
+    padding: 8px;
+    width: 250px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(178, 167, 167);
+    left: 60%;
+}
+
 
