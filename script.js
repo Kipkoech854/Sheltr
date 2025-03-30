@@ -1,11 +1,11 @@
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const API_URL = "http://localhost:3000/shelters";
+    const URL = "http://localhost:3000/shelters";
     let sheltersData = [];
 
     async function fetchShelters() {
         try {
-            const response = await fetch(API_URL);
+            const response = await fetch(URL);
             sheltersData = await response.json();
             renderListings(sheltersData);
             populateDropdown(sheltersData);
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const shelterId = event.target.dataset.id;
             const infoElement = event.target.nextElementSibling;
             try {
-                const response = await fetch(`${API_URL}/${shelterId}`);
+                const response = await fetch(`${URL}/${shelterId}`);
                 const shelter = await response.json();
                 infoElement.textContent = `Services: ${shelter.services || "No services available"}`;
                 infoElement.classList.toggle("hidden");
@@ -120,6 +120,18 @@ document.addEventListener("DOMContentLoaded", async () => {
             alert("Please enter both your name and email.");
         }
     });
+    document.getElementById("listings-container").addEventListener("mouseover", (event) => {
+        if (event.target.closest(".listing")) {
+            event.target.closest(".listing").style.transform = "scale(1.05)";
+            event.target.closest(".listing").style.transition = "transform 0.3s ease-in-out";
+        }
+    });
+    
+    document.getElementById("listings-container").addEventListener("mouseout", (event) => {
+        if (event.target.closest(".listing")) {
+            event.target.closest(".listing").style.transform = "scale(1)";
+        }
+    });    
 
     await fetchShelters();
 });
