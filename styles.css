@@ -137,9 +137,10 @@ header {
     left:70%;
     background-color: gray;
 }
-.services-button {
-    background-color: #007bff;
+.details-btn{
+    background-color: #4686ca;
 }
+
 
 #name{
     left: 10%;

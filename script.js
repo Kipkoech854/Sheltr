@@ -1,116 +1,59 @@
+
 document.addEventListener("DOMContentLoaded", async () => {
+    const API_URL = "http://localhost:3000/shelters";
     let sheltersData = [];
-    const URL = "http://localhost:3000/shelters";
 
     async function fetchShelters() {
         try {
-            const response = await fetch(URL);
+            const response = await fetch(API_URL);
             sheltersData = await response.json();
-            displayListings(sheltersData);
+            renderListings(sheltersData);
             populateDropdown(sheltersData);
         } catch (error) {
             console.error("Error fetching shelters:", error);
         }
     }
 
-    function displayListings(shelterList) {
+    function renderListings(shelters) {
         const container = document.getElementById("listings-container");
-        container.innerHTML = "";
-
-        shelterList.forEach(shelter => {
-            const listing = document.createElement("div");
-            listing.classList.add("listing");
-
-            listing.innerHTML = `
+        container.innerHTML = shelters.map(shelter => `
+            <div class="listing">
                 <img src="${shelter.image}" alt="${shelter.name}">
                 <div class="description">
                     <h3>${shelter.name}</h3>
                     <p><strong>Location:</strong> ${shelter.location}</p>
-                    <p><strong>Listing Agent:</strong> ${shelter.listingagent}</p>
+                    <p><strong>Agent:</strong> ${shelter.listingagent}</p>
                     <p><strong>Type:</strong> ${shelter.type}</p>
                     <p><strong>Price:</strong> ${shelter.price ? `Ksh ${shelter.price}` : "Free"}</p>
-                    <button class="services-button" data-id="${shelter.id}">View Details</button>
+                    <button class="details-btn" data-id="${shelter.id}">View Details</button>
                     <p class="services-info hidden"></p>
                 </div>
-            `;
-
-            container.appendChild(listing);
-        });
-
-        document.querySelectorAll(".services-button").forEach(button => {
-            button.addEventListener("click", async function () {
-                const shelterId = this.getAttribute("data-id");
-                const servicesInfo = this.nextElementSibling;
-
-                if (!servicesInfo.textContent) {
-                    await fetchServices(shelterId, servicesInfo);
-                }
-                servicesInfo.classList.toggle("hidden");
-            });
-        });
-    }
-
-    async function fetchServices(shelterId, servicesInfoElement) {
-        try {
-            const response = await fetch(`${URL}/${shelterId}`);
-            if (!response.ok) throw new Error("Failed to fetch services");
-
-            const shelter = await response.json();
-            const services = shelter.services ? shelter.services : "No services available";
-
-            servicesInfoElement.textContent = `Services: ${services}`;
-        } catch (error) {
-            console.error("Error fetching services:", error);
-            servicesInfoElement.textContent = "Error loading services.";
-        }
-    }
-
-    function getUniqueTypes(shelters) {
-        return [...new Set(shelters.map(shelter => shelter.type))];
+            </div>`).join('');
     }
 
     function populateDropdown(shelters) {
-        const dropdownList = document.getElementById("dropdown-list");
-        dropdownList.innerHTML = "";
-        const types = getUniqueTypes(shelters);
-        types.forEach(type => {
-            const link = document.createElement("a");
-            link.textContent = type;
-            link.onclick = () => filterByType(type);
-            dropdownList.appendChild(link);
-        });
+        const dropdown = document.getElementById("dropdown-list");
+        dropdown.innerHTML = [...new Set(shelters.map(s => s.type))]
+            .map(type => `<a href="#" class="dropdown-item" data-type="${type}">${type}</a>`)
+            .join('');
     }
-
-    function filterByType(type) {
-        const filteredShelters = sheltersData.filter(shelter => shelter.type === type);
-        displayListings(filteredShelters);
-    }
-
-    document.querySelector(".dropdown-button").addEventListener("click", function () {
-        document.getElementById("dropdown-list").style.display =
-            document.getElementById("dropdown-list").style.display === "block" ? "none" : "block";
-    });
-
-    window.addEventListener("click", function (event) {
-        if (!event.target.matches(".dropdown-button")) {
-            document.getElementById("dropdown-list").style.display = "none";
-        }
-    });
 
     document.getElementById("search-bar").addEventListener("input", () => {
-        filterListings();
+        const query = document.getElementById("search-bar").value.toLowerCase();
+        const filteredShelters = sheltersData.filter(shelter =>
+            shelter.name.toLowerCase().includes(query) ||
+            shelter.location.toLowerCase().includes(query) ||
+            shelter.type.toLowerCase().includes(query)
+        );
+        renderListings(filteredShelters);
     });
 
-    function filterListings() {
-        const searchInput = document.getElementById("search-bar").value.toLowerCase();
-        const filteredShelters = sheltersData.filter(shelter =>
-            shelter.name.toLowerCase().includes(searchInput) ||
-            shelter.location.toLowerCase().includes(searchInput) ||
-            shelter.type.toLowerCase().includes(searchInput)
-        );
-        displayListings(filteredShelters);
-    }
-
+    document.getElementById("dropdown-list").addEventListener("click", event => {
+        if (event.target.classList.contains("dropdown-item")) {
+            const type = event.target.dataset.type;
+            renderListings(sheltersData.filter(s => s.type === type));
+        }
+    });
     document.querySelectorAll("#filterbyprice button").forEach(button => {
         button.addEventListener("click", () => {
             filterByPrice(button.classList[0]);
@@ -143,8 +86,24 @@ document.addEventListener("DOMContentLoaded", async () => {
                 filteredShelters = sheltersData;
         }
 
-        displayListings(filteredShelters);
+        renderListings(filteredShelters);
     }
+
+
+    document.getElementById("listings-container").addEventListener("click", async event => {
+        if (event.target.classList.contains("details-btn")) {
+            const shelterId = event.target.dataset.id;
+            const infoElement = event.target.nextElementSibling;
+            try {
+                const response = await fetch(`${API_URL}/${shelterId}`);
+                const shelter = await response.json();
+                infoElement.textContent = `Services: ${shelter.services || "No services available"}`;
+                infoElement.classList.toggle("hidden");
+            } catch (error) {
+                console.error("Error fetching details:", error);
+            }
+        }
+    });
 
     document.getElementById("login-icon").addEventListener("click", () => {
         document.getElementById("login-form").classList.toggle("hidden");
@@ -155,15 +114,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         const email = document.getElementById("email").value.trim();
 
         if (username && email) {
-            const firstName = username.split(" ")[0];
-            document.getElementById("greeting").textContent = `Hello, ${firstName}`;
+            document.getElementById("greeting").textContent = `Hello, ${username.split(" ")[0]}`;
             document.getElementById("login-form").classList.add("hidden");
         } else {
             alert("Please enter both your name and email.");
         }
     });
-    
-    fetchShelters();
-});
 
-    
+    await fetchShelters();
+});
