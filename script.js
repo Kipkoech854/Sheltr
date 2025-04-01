@@ -4,22 +4,28 @@ document.addEventListener("DOMContentLoaded", async () => {
     let sheltersData = [];
     const URL = "http://localhost:3000/shelters";
 
+
     async function fetchShelters() {
         try {
             const response = await fetch(URL);
-        
+            
+            if (!response.ok) {
+                throw new Error(`HTTP Error! Status: ${response.status}`);
+            }
+    
             const rawData = await response.text();
             console.log("Raw Response:", rawData);
     
             sheltersData = JSON.parse(rawData);
             console.log("Parsed Data:", sheltersData);
-
+    
             displayListings(sheltersData);
             populateDropdown(sheltersData);
         } catch (error) {
             console.error("Error fetching shelters:", error);
         }
     }
+    
     
 
     function displayListings(shelterList) {
