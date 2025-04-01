@@ -60,4 +60,11 @@ It serves as a platform in which listing agents use to list property.The clients
 ## License
 This project is open-source. Feel free to modify and use it as needed!
 
+## Deployment links
+https://celadon-salamander-75a68b.netlify.app/
 
+the above is a deployment link using netlify
+
+ https://kipkoech854.github.io/Sheltr/
+
+ the above is the deployment link using github

@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         try {
             const response = await fetch(URL);
             
+            console.log("Response Status:", response.status);
+            console.log("Response Headers:", [...response.headers]);
+            
             if (!response.ok) {
                 throw new Error(`HTTP Error! Status: ${response.status}`);
             }
