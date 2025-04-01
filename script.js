@@ -6,11 +6,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     async function fetchShelters() {
         try {
             const response = await fetch(URL);
+            console.log(response);
             sheltersData = await response.json();
+            console.log(sheltersData);
             displayListings(sheltersData);
             populateDropdown(sheltersData);
         } catch (error) {
             console.error("Error fetching shelters:", error);
+            console.log(error);
         }
     }
 
