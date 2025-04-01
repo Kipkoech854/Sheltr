@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     async function fetchShelters() {
         try {
             const response = await fetch(URL);
-            
+
             console.log("Response Status:", response.status);
             console.log("Response Headers:", [...response.headers]);
             

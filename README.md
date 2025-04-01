@@ -54,11 +54,16 @@ It serves as a platform in which listing agents use to list property.The clients
 
 ## Future Improvements
 - Implement a user authentication system.
+- Implement an explore more feature whereby one can see more photos perhaps even  a video of the listing.
 - Allow users to submit and review shelters.
 - Add a more advanced filtering system.
+- Implement a feature where the listings displayed are based on previous searches as in user preference. 
+- Implement a map functionality whereby one can view the location on google maps.
 
 ## License
 This project is open-source. Feel free to modify and use it as needed!
+
+The details in the json file are mock  details and not actual details of places.Real ones can be uploaded when one one wants to use the application to do actual listings. 
 
 ## Deployment links
 https://celadon-salamander-75a68b.netlify.app/
