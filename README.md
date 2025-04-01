@@ -45,6 +45,8 @@ This application helps users browse, search, and filter shelter listings based o
 5. **View More Details:** Click on "View Details" to see additional services.
 6. **Login:** Click the login icon, enter your name and email to personalize your experience.
 
+It serves as a platform in which listing agents use to list property.The clients reach out through the email or phone whereby they are connected to the agent.
+
 ## Technologies Used
 - JavaScript (DOM manipulation, Fetch API)
 - HTML & CSS
